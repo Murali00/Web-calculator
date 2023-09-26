@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  
+  <style>
+body{
+  background-image: url(https://img.freepik.com/premium-photo/workspace-color-desk-home-office_146377-2350.jpg?w=740);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+    .container {
+      margin-left: 800px;
+      margin-right: auto;
+  display: flex;
+  
+  align-items: center;
+  height: 100vh;
+
+ 
+}
+
+.calculator {
+
+  background-image: url(https://i.pinimg.com/564x/a6/42/cc/a642ccc7300fc88240094fb76c0021c6.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  padding: 0 20px 20px 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+}
+
+#display {
+  width: 90%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.buttons {
+  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="calculator">
+      <h3 style="color: rgb(66, 66, 66);">Calculator</h3>
+      <input type="text" id="display" disabled>
+      <div class="buttons">
+        <button onclick="display()">C</button>
+        <button onclick="a(7)">7</button>
+        <button onclick="a(8)">8</button>
+        <button onclick="a(9)">9</button>
+        <button onclick="symbol('+')">+</button>
+        <button onclick="a(4)">4</button>
+        <button onclick="a(5)">5</button>
+        <button onclick="a(6)">6</button>
+        <button onclick="symbol('-')">-</button>
+        <button onclick="a(1)">1</button>
+        <button onclick="a(2)">2</button>
+        <button onclick="a(3)">3</button>
+        <button onclick="symbol('*')">*</button>
+        <button onclick="a(0)">0</button>
+        <button onclick="symbol('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="symbol('/')">/</button>
+        <button onclick="del()">del</button>
+  
+       
+      </div>
+    
+    </div>
+  </div>
+
+  <script>
+    let displayValue = "";
+
+function a(number) {
+  displayValue += number;
+  updateDisplay();
+}
+
+function symbol(operator) {
+  displayValue += operator;
+  updateDisplay();
+}
+
+function calculate() {
+  try {
+    const result = eval(displayValue);
+    displayValue = result;
+    updateDisplay();
+  } catch (error) {
+    displayValue = "Error";
+    updateDisplay();
+  }
+}
+
+function display() {
+  displayValue = "";
+  updateDisplay();
+}
+
+function updateDisplay() {
+  document.getElementById("display").value = displayValue;
+}
+
+function del(){
+  displayValue=displayValue.slice(0,-1);
+  updateDisplay();
+}
+
+
+
+
+
+  </script>
+</body>
+</html>
